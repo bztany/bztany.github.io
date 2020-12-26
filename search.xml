@@ -1,46 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Redis持久化</title>
-    <url>/2020/12/25/Redis%E6%8C%81%E4%B9%85%E5%8C%96/</url>
-    <content><![CDATA[<h3 id="Redis持久化RDB和AOF"><a href="#Redis持久化RDB和AOF" class="headerlink" title="Redis持久化RDB和AOF"></a>Redis持久化RDB和AOF</h3><p>​    Redis性能好，读写快，单线程，是一个内存型数据库，Nosql非关系型数据库</p>
-<pre><code>RDB——数据快照
-Redis可以加载RDB文件，将数据从磁盘读取到数据库Redis中。
-Redis目录中有一个dump.rdb文件，是一个二进制文件。
-在Redis中，自动保存RDB是默认开启的。
-RDB优缺点：
-(1)优点：
-1.RDB是某一个时间节点的快照，是一个紧凑的单文件，更多用于数据备份。
-2.单文件容易传输到远程服务器做故障恢复
-3.RDB可以子进程Fork进行持久化，使Redis更好处理用户请求
-4.在大量数据情况下，RDB比AOF更快加载
-(2)缺点：
-1.如果Redis不及时保存RDB文件，会造成数据的丢失
-2.RDB经常需要使用子进程Fork，而Fork操作会消耗大量CPU资源
-
-AOF——日志追加
-AOF相当于一个操作的日志记录，默认是关闭的，在redis.conf中配置开启，会看到appendonly.aof文件
-缺点会导致文件数据冗余，可进行日志重写。
-(1)优点：
-1.AOF可以设置完全不同步，每秒同步，每次操作同步，默认每秒同步
-2.若AOF文件过大，Redis会自动重写AOF文件，消除数据冗余
-3.AOF有序保存数据库的所有写入操作，易读易分析。
-(2)缺点：
-1.相同数据量情况下，AOF文件通常比RDB文件大
-2.在大量写入和载入的时候，AOF比RDB文件效率低。
-
-不推荐单独使用AOF，因为AOF对于数据的恢复载入来说，比RDB慢。
-AOF和RDB可以一起使用。</code></pre>
-]]></content>
-      <categories>
-        <category>后端 - Redis</category>
-      </categories>
-      <tags>
-        <tag>数据库</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java常用类的方法</title>
     <url>/2020/12/25/Java%E5%B8%B8%E7%94%A8%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a><strong>Object</strong></h3><p>1.是类层次结构的根类，所有类都直接或间接的继承自object类。</p>
@@ -97,6 +57,46 @@ AOF和RDB可以一起使用。</code></pre>
       <tags>
         <tag>Java</tag>
         <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis持久化</title>
+    <url>/2020/12/25/Redis%E6%8C%81%E4%B9%85%E5%8C%96/</url>
+    <content><![CDATA[<h3 id="Redis持久化RDB和AOF"><a href="#Redis持久化RDB和AOF" class="headerlink" title="Redis持久化RDB和AOF"></a>Redis持久化RDB和AOF</h3><p>​    Redis性能好，读写快，单线程，是一个内存型数据库，Nosql非关系型数据库</p>
+<pre><code>RDB——数据快照
+Redis可以加载RDB文件，将数据从磁盘读取到数据库Redis中。
+Redis目录中有一个dump.rdb文件，是一个二进制文件。
+在Redis中，自动保存RDB是默认开启的。
+RDB优缺点：
+(1)优点：
+1.RDB是某一个时间节点的快照，是一个紧凑的单文件，更多用于数据备份。
+2.单文件容易传输到远程服务器做故障恢复
+3.RDB可以子进程Fork进行持久化，使Redis更好处理用户请求
+4.在大量数据情况下，RDB比AOF更快加载
+(2)缺点：
+1.如果Redis不及时保存RDB文件，会造成数据的丢失
+2.RDB经常需要使用子进程Fork，而Fork操作会消耗大量CPU资源
+
+AOF——日志追加
+AOF相当于一个操作的日志记录，默认是关闭的，在redis.conf中配置开启，会看到appendonly.aof文件
+缺点会导致文件数据冗余，可进行日志重写。
+(1)优点：
+1.AOF可以设置完全不同步，每秒同步，每次操作同步，默认每秒同步
+2.若AOF文件过大，Redis会自动重写AOF文件，消除数据冗余
+3.AOF有序保存数据库的所有写入操作，易读易分析。
+(2)缺点：
+1.相同数据量情况下，AOF文件通常比RDB文件大
+2.在大量写入和载入的时候，AOF比RDB文件效率低。
+
+不推荐单独使用AOF，因为AOF对于数据的恢复载入来说，比RDB慢。
+AOF和RDB可以一起使用。</code></pre>
+]]></content>
+      <categories>
+        <category>后端 - Redis</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
